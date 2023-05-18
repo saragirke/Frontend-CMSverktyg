@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Poppins&family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Poppins&display=swap" rel="stylesheet">
-    <title v-text="header.title"></title>
+    <title>{{ headerTitle }}</title>
   </head>
   <body>
  
@@ -36,7 +36,9 @@
   },
   
   components: {
-  Header,
+    headerTitle() {
+          return this.header.length > 0 ? this.header[0].title : '';
+        },
   },
   
   methods: {
