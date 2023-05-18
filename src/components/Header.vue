@@ -28,10 +28,10 @@
   <!-- Navigering för mobil-->
   <ul class="navbar" id="navbar">
     <li class="text-lg pr-8 "><RouterLink to="/" class="transition duration-300 focus:outline-none focus:underline hover:underline" style="text-underline-offset: 8px;">HEM</RouterLink></li>
-    <li class="text-lg pr-8"><a href="" class="transition duration-300 focus:outline-none focus:underline hover:underline" style="text-underline-offset: 8px;">TJÄNSTER</a></li>
+    <li class="text-lg pr-8"><RouterLink to="service" class="transition duration-300 focus:outline-none focus:underline hover:underline" style="text-underline-offset: 8px;">TJÄNSTER</RouterLink></li>
     <li class="text-lg pr-8"><RouterLink to="news" class="transition duration-300 focus:outline-none focus:underline hover:underline" style="text-underline-offset: 8px;">NYHETER</RouterLink></li>
-    <li class="text-lg pr-8"><a href="" class="transition duration-300 focus:outline-none focus:underline hover:underline" style="text-underline-offset: 8px;">OM OSS</a></li>
-    <li class="text-lg pr-8"><a href="" class="transition duration-300 focus:outline-none focus:underline hover:underline" style="text-underline-offset: 8px;">KONTAKT</a></li>
+    <li class="text-lg pr-8"><RouterLink to="about" class="transition duration-300 focus:outline-none focus:underline hover:underline" style="text-underline-offset: 8px;">OM OSS</RouterLink></li>
+    <li class="text-lg pr-8"><RouterLink to="contact" class="transition duration-300 focus:outline-none focus:underline hover:underline" style="text-underline-offset: 8px;">KONTAKT</RouterLink></li>
     <a class="close" href="#">
       <img src="https://ljc-dev.github.io/testing0/ham-close.svg" alt="close">
     </a>
