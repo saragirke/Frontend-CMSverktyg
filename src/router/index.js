@@ -50,7 +50,7 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
       meta: {
-        title: 'Våra tjänster'
+        title: 'Om Oss'
       }
     }
   ]
