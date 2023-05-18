@@ -10,7 +10,10 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        title: 'Start'
+      }
     },
     {
       path: '/news',
@@ -45,9 +48,18 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      component: () => import('../views/AboutView.vue'),
+      meta: {
+        title: 'Våra tjänster'
+      }
     }
   ]
+})
+
+
+// Dynamiska titles
+router.beforeEach((to, from) => {
+  document.title = to.meta?.title ?? 'Default Title'
 })
 
 export default router
