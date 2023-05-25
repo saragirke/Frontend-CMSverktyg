@@ -31,7 +31,7 @@
 
     <section class="flex items-center justify-center border-t-2">
   <div class="py-8 px-4 mxauto max-w-screen-xl text-center lg:py-16 lg:px-6">
-      <div class="mx-auto mb-8 max-w-screen-sm lg:mb-16">
+      <div class="mx-auto mb-8 max-w-screen-sm lg:mb-16" v-if="staff.length > 0">
           <h2 class="mb-4 text-4xl font-extrabold text-black">Medarbetare</h2>
       </div> 
      
