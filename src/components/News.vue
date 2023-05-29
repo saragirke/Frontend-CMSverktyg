@@ -31,10 +31,10 @@
            <span v-html="news.post"></span> <!-- Texten skrivs ut som raw HTML -->
         
         </p>
-        <br>
+        <br>  <br>  <br>
   
   
-        <form class="w-full max-w-xl bg-white rounded-lg px-4 pt-2" @submit.prevent="addComment(news.id)">
+        <form class="w-full max-w-xl bg-white rounded-lg" @submit.prevent="addComment(news.id)">
   <input type="hidden" v-bind:id="news.id" value="{{ news.id }}" id="newsId">
   <textarea class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white" v-model="commentPost" rows="2" cols="50" id="commentPost" name="commentPost" placeholder="Kommentera..." aria-label="Kommentar"></textarea>
   <br>
@@ -44,7 +44,9 @@
  <br>
  <div v-bind:id="'error' + news.id"></div>
 </form>
-
+<div class="w-full max-w-xl bg-white rounded-lg">
+<button @click="getCommentByNews(news.id)" class="readComment"> Läs kommentarer ({{ commentCount }})</button>
+<div v-bind:id="'comments' + news.id"></div></div>
         
       </div> </div>
       </section>
@@ -59,13 +61,28 @@
     data() {
     return {
        commentPost: "",
+       commentCount: 0
     }
   },
     props: {
       news: Object,
     },
 
-    methods: {
+    methods:
+     {
+// Funktion för att räkna antal kommentarer per inlägg 
+      async countComments(newsId) {
+        const resp = await fetch(`https://cmsverktyg.azurewebsites.net/api/ApiComment/${newsId}`, {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+
+    const data = await resp.json();
+    this.commentCount = data.length; 
+  },
+
       async addComment(newsId) {
       //Kontrollerar att fälten är ifyllda
       if (
@@ -93,7 +110,6 @@
 
         this.commentPost = ""; 
        
-       // this.$router.go()
        document.getElementById("error" + newsId).innerHTML = "<div class='p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400' role='alert'>" + "Kommentaren har skickats!" + "</div>";
       } 
       else {
@@ -101,14 +117,44 @@
       }
     }, 
 
+    async getCommentByNews(newsId) {
+      
+  try {
+    const resp = await fetch(`https://cmsverktyg.azurewebsites.net/api/ApiComment/${newsId}`, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    });
 
+    const data = await resp.json();
+
+    let comments = '';
+    data.forEach(comment => {
+      comments += `
+        <div id="read">
+          <p><strong>Kommentar:</strong> ${comment.commentPost}</p>
+          <p><strong>Datum:</strong> ${comment.dateCreated}</p>
+        </div>
+        <hr>
+      `;
+    });
+
+    document.getElementById(`comments${newsId}`).innerHTML = comments;
+    this.commentCount = data.length; 
+
+
+  } catch (error) {
+    console.log(error);
+  }
+}
 
     },
 
     emits: ["CommentAdded"],
     mounted() {
-
-  },
+  this.countComments(this.news.id);
+},
   };
   </script>
 
@@ -119,4 +165,20 @@
     color:black;
     line-height: 1.7;
    }
+
+   #comments {
+    margin-top: 15%;
+   }
+
+   .readComment {
+    margin-bottom:5%;
+    text-decoration: underline;
+    font-family:  'Poppins', sans-serif;
+   }
+
+   div{
+    font-family:  'Poppins', sans-serif;
+   }
+
+
    </style>
