@@ -9,7 +9,7 @@
         <div
           class="relative overflow-hidden bg-no-repeat bg-cover relative overflow-hidden bg-no-repeat bg-cover ripple shadow-lg rounded-lg"
           data-mdb-ripple="true" data-mdb-ripple-color="light">
-          <img :src="('https://cmsverktyg.azurewebsites.net/imageupload'+ news.imageName)" :alt="(news.altText)" class="w-full" />
+          <img :src="('https://cmsverktyg.azurewebsites.net/imageupload/'+ news.imageName)" :alt="(news.altText)" class="w-full" />
          
    
             <div class="absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed opacity-0 "
