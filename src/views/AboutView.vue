@@ -39,7 +39,7 @@
     
             <template  v-for="staff in staff" :staff="staff" :key="staff.id">
               <div class="text-center">
-              <img class="mx-auto mb-4 w-48 h-48 rounded-full" :src="('https://cmsverktyg.azurewebsites.net/imageupload' + staff.imageName)" :alt="(staff.altText)" />
+              <img class="mx-auto mb-4 w-48 h-48 rounded-full" :src="('https://cmsverktyg.azurewebsites.net/imageupload/' + staff.imageName)" :alt="(staff.altText)" />
               <h3 class="mb-1 text-2xl font-bold tracking-tight text-black">
                   <a href="#">{{ staff.name }}</a>
               </h3>
