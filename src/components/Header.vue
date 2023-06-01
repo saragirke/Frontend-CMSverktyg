@@ -3,7 +3,7 @@
     <nav class="p-4 text-black-200 shadow-lg" :style="{background: `${header.navColor}`}">
   <div class="flex justify-between items-center" >
   <div class="flex items-center pl-2"> <RouterLink to="/">
-    <img :src="('https://cmsverktyg.azurewebsites.net/imageupload'+ header.logoName)"
+    <img :src="('https://cmsverktyg.azurewebsites.net/imageupload/'+ header.logoName)"
     class="h-12 md:h-12 lg:h-14 mr-3" alt="Logga med länk till startsidan" /></RouterLink>
   </div>
 
