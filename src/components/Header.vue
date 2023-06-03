@@ -43,8 +43,10 @@
 
 
 <div class="header">
+  <!-- Header-bild-->
   <img :src="('https://cmsverktyg.azurewebsites.net/imageupload/'+ header.imageName)" alt="Headerbild">
   <div class="centered">
+    <!-- TItel och font och fontfärg-->
   <h1 class="mb-4 text-3xl font-extrabold md:text-5xl lg:text-6xl" :style="{color: `${header.fontColor}`, fontFamily: `${header.font}`}">
   {{header.title }}
   </h1>
