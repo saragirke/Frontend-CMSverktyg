@@ -30,5 +30,3 @@ npm run build
 # Frontend-CMS verktyg
 Den publika webbplats som skapas med CMS-systemet https://github.com/saragirke/CMS-system
 
-Publicerad webbplats: 
-https://cmswebbplats.vercel.app/
